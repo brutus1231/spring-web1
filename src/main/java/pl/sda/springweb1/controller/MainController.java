@@ -8,24 +8,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class MainController {
 
+    private static int COUNTER = 0;
+
     @GetMapping("/")
-    public String mainPage(@RequestParam(name = "button1", required = false)
-                                       String button1, Model model) {
+    public String mainPage(@RequestParam(name = "button1", required = false) String button1, Model model) {
 
         model.addAttribute("hello", "Hello world !!");
         if (button1 != null) {
             //kliknieto w przycisk
-            Object counter = model.getAttribute("counter_value");
-            if(counter == null) {
-                model.addAttribute("counter_value", 1);
-                model.addAttribute("counter", "Kliknieto 1");
-            }
-            else {
-                Integer counterInt = (Integer) counter;
-                model.addAttribute("counter", "Kliknieto " + ++counterInt);
-                model.addAttribute("counter_value", counterInt);
-            }
-
+            model.addAttribute("counter", "Kliknieto " + ++COUNTER);
         }
         return "index";
     }
