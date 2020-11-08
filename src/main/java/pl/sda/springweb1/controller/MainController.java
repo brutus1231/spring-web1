@@ -9,18 +9,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class MainController {
 
     @GetMapping("/")
-    public String mainPage(Model model) {
+    public String mainPage(@RequestParam(name = "button1", required = false)
+                                       String button1, Model model) {
 
         model.addAttribute("hello", "Hello world !!");
+        if (button1 != null) {
+            int counter = 0;
+            model.addAttribute("counter", "Kliknieto " + counter);
+        }
         return "index";
     }
 
-    @GetMapping("/")
-    public String buttonClicked(@RequestParam(name = "button1")
-                                            String button1,
-                                            Model model) {
-        int counter = 0;
-        model.addAttribute("counter", "Kliknieto " + counter);
-        return "index";
-    }
+
 }
