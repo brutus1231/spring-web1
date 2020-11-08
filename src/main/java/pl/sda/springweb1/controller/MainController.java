@@ -14,8 +14,18 @@ public class MainController {
 
         model.addAttribute("hello", "Hello world !!");
         if (button1 != null) {
-            int counter = 0;
-            model.addAttribute("counter", "Kliknieto " + counter);
+            //kliknieto w przycisk
+            Object counter = model.getAttribute("counter_value");
+            if(counter == null) {
+                model.addAttribute("counter_value", 1);
+                model.addAttribute("counter", "Kliknieto 1");
+            }
+            else {
+                Integer counterInt = (Integer) counter;
+                model.addAttribute("counter", "Kliknieto " + ++counterInt);
+                model.addAttribute("counter_value", counterInt);
+            }
+
         }
         return "index";
     }
