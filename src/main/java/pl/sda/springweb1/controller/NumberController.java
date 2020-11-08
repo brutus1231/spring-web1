@@ -10,7 +10,7 @@ public class NumberController {
 
     @GetMapping("/numbers/{id}")
     public String getNumber(@PathVariable Integer id, Model model) {
-        model.addAttribute("number", id);
+        model.addAttribute("number", "Wybrano " + id);
         return "numbers";
     }
 }
