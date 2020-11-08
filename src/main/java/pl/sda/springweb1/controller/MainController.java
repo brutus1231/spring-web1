@@ -27,7 +27,7 @@ public class MainController {
     public String button2Clicked(@RequestParam(name = "button2") String button2, Model model) {
 
         model.addAttribute("hello", "Hello world !!");
-        model.addAttribute("counter", "Kliknieto " + ++COUNTER2);
+        model.addAttribute("counter2", "Kliknieto " + ++COUNTER2);
         return "index";
     }
 }
