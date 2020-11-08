@@ -3,8 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Main spring web page</title>
+    <script>
+        var counter = 0;
+        function clickButton(){
+            alert('Kliknieto' + ++counter);
+        }
+    </script>
 </head>
 <body>
     <h2><span th:text="${hello}"></span></h2>
+
+    <input type="button" value="Kliknij" onClick="clickButton()"/>
+    <br/><br />
+
+
+    <form method="get">
+        <input type="submit" value="Kliknij" name="button1">
+    </form>
+    <span th:text="${counter}"></span>
+
 </body>
 </html>
